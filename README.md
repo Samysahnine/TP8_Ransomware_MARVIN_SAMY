@@ -34,7 +34,16 @@ Ce projet simule un ransomware pédagogique pour apprendre les bases :
 ---
 
 ## Structure du projet
-<pre><code>``` TP/ ├── ransomware.c ├── client_decrypt.c ├── serveur_pardon.c ├── README.md └── Projet/ ├── secret.txt ├── password.md └── main.c ```</code></pre>
+TP/
+├── ransomware.c
+├── client_decrypt.c
+├── serveur_pardon.c
+├── README.md
+└── Projet/
+├── secret.txt
+├── password.md
+└── main.c
+
 
 ---
 
