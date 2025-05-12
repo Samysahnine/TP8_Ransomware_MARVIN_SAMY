@@ -21,20 +21,31 @@ void handle_connection(int client_sock) {
     }
     buffer[n] = '\0';
 
+    printf("[*] Recu : %s\n", buffer);
+
     if (strncmp(buffer, "SENDKEY:", 8) == 0) {
         memcpy(global_key, buffer + 8, KEY_LEN);
         memcpy(global_iv, buffer + 8 + KEY_LEN, IV_LEN);
         key_iv_set = 1;
+        printf("[+] Cle et IV enregistres.\n");
     } else if (strncmp(buffer, "EXCUSE:", 7) == 0) {
         char *excuse = buffer + 7;
+        printf("[*] Excuse recue : %s\n", excuse);
         if (strlen(excuse) > 20 && key_iv_set) {
             send(client_sock, global_key, KEY_LEN, 0);
             send(client_sock, global_iv, IV_LEN, 0);
+            printf("[+] Excuse acceptee. Cle envoyee.\n");
         } else {
-            char *msg = "Refuse\n";
+            char *msg = "Excuse trop courte ou cle absente.\n";
             send(client_sock, msg, strlen(msg), 0);
+            printf("[-] Excuse refusee.\n");
         }
+    } else {
+        char *msg = "Commande inconnue.\n";
+        send(client_sock, msg, strlen(msg), 0);
+        printf("[!] Commande inconnue recue.\n");
     }
+
     close(client_sock);
 }
 
@@ -50,8 +61,11 @@ int main() {
     bind(server_sock, (struct sockaddr *)&server_addr, sizeof(server_addr));
     listen(server_sock, 5);
 
+    printf("[*] Serveur pardon lance sur le port %d\n", PORT);
+
     while (1) {
         int client_sock = accept(server_sock, (struct sockaddr *)&client_addr, &addr_size);
+        printf("[*] Nouvelle connexion recue.\n");
         handle_connection(client_sock);
     }
 

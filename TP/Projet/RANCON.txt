@@ -1,0 +1,36 @@
+#########################################
+#        [!] FICHIERS CHIFFRES [!]       #
+#########################################
+
+Vos fichiers dans ce dossier ont ete chiffres par ProManager,
+car la date limite de remise du projet a ete depassee.
+
+Chaque fichier a ete chiffre en AES-256 avec une cle unique.
+
+Ne tentez pas de modifier les fichiers .enc, vous risqueriez
+de les rendre irrecuperables.
+
+-----------------------------------------
+
+Pour recuperer vos fichiers :
+
+1. Lancez le programme client_decrypt disponible dans le dossier TP/.
+2. Connectez-vous au serveur de l'administration via l'adresse suivante :
+   - Adresse : 127.0.0.1
+   - Port    : 4242
+3. Le serveur vous demandera une justification ecrite.
+   Redigez un message d'excuse sincere (minimum 20 caracteres).
+4. Si vos excuses sont acceptees, vous recevrez automatiquement :
+   - La cle de dechiffrement
+   - Le vecteur d'initialisation (IV)
+5. Le programme client_decrypt dechiffrera ensuite vos fichiers.
+
+-----------------------------------------
+
+Si vous avez deja presente vos excuses,
+vous pouvez relancer client_decrypt directement.
+
+Fichiers cibles : .txt, .md, .c, etc.
+Delai ecoule : 1h apres la creation du dossier Projet/
+
+Ce ransomware est un exercice pedagogique.

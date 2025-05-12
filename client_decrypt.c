@@ -53,7 +53,7 @@ int main() {
     excuse[strcspn(excuse, "\n")] = 0;
 
     if (strlen(excuse) <= 20) {
-        printf("Excuse trop courte\n");
+        printf("Excuse trop courte (%lu caracteres). Minimum requis : 21\n", strlen(excuse));
         return 1;
     }
 
@@ -95,6 +95,7 @@ int main() {
         if (entry->d_type == DT_REG && strstr(entry->d_name, ".enc")) {
             snprintf(fullpath, sizeof(fullpath), "TP/Projet/%s", entry->d_name);
             decrypter_fichier(fullpath, key, iv);
+            printf("-> %s dechiffre.\n", entry->d_name);
         }
     }
 
