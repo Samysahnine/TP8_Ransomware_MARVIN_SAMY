@@ -9,7 +9,7 @@
 #include <arpa/inet.h>
 
 #define WATCHED_DIR "TP/Projet"
-#define TIMER_SECONDS 10
+#define TIMER_SECONDS 3600
 #define KEY_LEN 32
 #define IV_LEN 16
 
